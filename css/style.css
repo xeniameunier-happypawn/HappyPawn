@@ -2,10 +2,12 @@
    VARIABLES & RESET
    ══════════════════════════════════════ */
 :root {
-    --green: #2D5F2B;
-    --green-light: #3A7A38;
-    --green-pale: #F0F7F0;
-    --gold: #C8A951;
+    /* Palette principale — alignée sur Lovable */
+    --orange: #D4722A;
+    --orange-light: #E8913A;
+    --orange-dark: #B85D1E;
+    --orange-bg: #FFF7F0;
+    --amber: #C8841E;
     --white: #FFFFFF;
     --off-white: #FAF9F6;
     --dark: #1A1A1A;
@@ -13,15 +15,17 @@
     --gray-light: #E5E7EB;
     --red: #DC2626;
     --red-light: #FEF2F2;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.06);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
     --radius: 12px;
     --radius-lg: 16px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -57,11 +61,17 @@ a {
     padding: 0 24px;
 }
 
-.hidden { display: none !important; }
+.hidden {
+    display: none !important;
+}
 
-.highlight-gold { color: var(--gold); }
-.highlight-green { color: var(--green); }
-.highlight-red { color: var(--red); }
+.highlight-orange {
+    color: var(--orange);
+}
+
+.highlight-red {
+    color: var(--red);
+}
 
 /* ══════════════════════════════════════
    BOUTONS
@@ -83,12 +93,12 @@ a {
 }
 
 .btn-primary {
-    background: var(--green);
+    background: var(--orange);
     color: var(--white);
 }
 
 .btn-primary:hover {
-    background: var(--green-light);
+    background: var(--orange-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
@@ -97,20 +107,37 @@ a {
     transform: translateY(0);
 }
 
+/* Bouton Hero — style outline blanc comme sur Lovable */
+.btn-hero {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    font-size: 1.1rem;
+    padding: 16px 36px;
+    border-radius: var(--radius);
+}
+
+.btn-hero:hover {
+    background: var(--white);
+    color: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.btn-hero:active {
+    transform: translateY(0);
+}
+
 .btn-secondary {
     background: transparent;
-    color: var(--green);
-    border: 2px solid var(--green);
+    color: var(--orange);
+    border: 2px solid var(--orange);
 }
 
 .btn-secondary:hover {
-    background: var(--green);
+    background: var(--orange);
     color: var(--white);
-}
-
-.btn-lg {
-    font-size: 1.1rem;
-    padding: 16px 36px;
 }
 
 .btn-full {
@@ -120,68 +147,68 @@ a {
 }
 
 /* ══════════════════════════════════════
-   SECTION 1 — HERO
+   SECTION 1 — HERO (image fullscreen + overlay orange)
    ══════════════════════════════════════ */
 .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(160deg, var(--green) 0%, #1a3d19 50%, var(--dark) 100%);
-    padding: 80px 24px;
-    position: relative;
+    justify-content: center;
     overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(200,169,81,0.1) 0%, transparent 60%);
-    pointer-events: none;
+    /* Overlay orange/ambre chaud — reproduit le rendu Lovable */
+    background: linear-gradient(
+        180deg,
+        rgba(195, 110, 40, 0.72) 0%,
+        rgba(210, 120, 45, 0.65) 40%,
+        rgba(180, 95, 30, 0.78) 100%
+    );
 }
 
 .hero-content {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
     position: relative;
     z-index: 1;
-    width: 100%;
-}
-
-.hero-text {
+    text-align: center;
+    max-width: 800px;
+    padding: 80px 24px;
     color: var(--white);
 }
 
 .hero h1 {
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 800;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     letter-spacing: -0.02em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .hero-subtitle {
-    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 32px;
-    line-height: 1.7;
-    max-width: 520px;
-}
-
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    object-fit: cover;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 36px;
+    line-height: 1.75;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ══════════════════════════════════════
@@ -240,7 +267,7 @@ a {
 .pain-text p {
     color: #4B5563;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .transition-text {
@@ -248,7 +275,7 @@ a {
     margin-top: 48px;
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--green);
+    color: var(--orange);
     font-style: italic;
 }
 
@@ -284,7 +311,7 @@ a {
 .benefit-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--green);
+    border-color: var(--orange);
 }
 
 .benefit-icon {
@@ -361,7 +388,8 @@ label {
     color: var(--red);
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 12px 14px;
     font-family: inherit;
@@ -374,22 +402,26 @@ input, textarea {
     outline: none;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: #9CA3AF;
 }
 
-input:focus, textarea:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(45,95,43,0.1);
+input:focus,
+textarea:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(212, 114, 42, 0.12);
 }
 
-input.invalid, textarea.invalid {
+input.invalid,
+textarea.invalid {
     border-color: var(--red);
-    box-shadow: 0 0 0 3px rgba(220,38,38,0.08);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
 }
 
-input.valid, textarea.valid {
-    border-color: var(--green);
+input.valid,
+textarea.valid {
+    border-color: var(--orange);
 }
 
 textarea {
@@ -413,12 +445,12 @@ textarea {
     min-height: 18px;
 }
 
-/* Loader spinner */
+/* Loader */
 .loader {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 3px solid rgba(255,255,255,0.3);
+    border: 3px solid rgba(255, 255, 255, 0.3);
     border-top-color: var(--white);
     border-radius: 50%;
     animation: spin 0.7s linear infinite;
@@ -443,7 +475,7 @@ textarea {
 .confirmation h3 {
     font-size: 1.4rem;
     margin-bottom: 12px;
-    color: var(--green);
+    color: var(--orange);
 }
 
 .confirmation p {
@@ -463,7 +495,7 @@ textarea {
 }
 
 .error-network a {
-    color: var(--green);
+    color: var(--orange);
     font-weight: 600;
     text-decoration: underline;
 }
@@ -473,7 +505,7 @@ textarea {
    ══════════════════════════════════════ */
 .footer {
     background: var(--dark);
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     padding: 44px 0 28px;
 }
 
@@ -494,7 +526,7 @@ textarea {
 .footer-baseline {
     font-size: 0.85rem;
     margin-top: 6px;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .footer-links {
@@ -506,17 +538,17 @@ textarea {
 
 .footer-links a {
     font-size: 0.88rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.55);
     transition: var(--transition);
 }
 
 .footer-links a:hover {
-    color: var(--gold);
+    color: var(--orange-light);
 }
 
 .footer-copy {
     font-size: 0.78rem;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255, 255, 255, 0.25);
 }
 
 /* ══════════════════════════════════════
@@ -542,28 +574,12 @@ textarea {
    RESPONSIVE
    ══════════════════════════════════════ */
 @media (max-width: 768px) {
-    .hero {
-        padding: 60px 20px;
-        min-height: auto;
-    }
-
     .hero-content {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        text-align: center;
+        padding: 60px 20px;
     }
 
-    .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-image {
-        order: -1;
-    }
-
-    .hero-image img {
-        max-width: 300px;
+    .hero h1 {
+        font-size: 1.8rem;
     }
 
     .benefits-grid {
@@ -578,7 +594,9 @@ textarea {
         padding: 28px 20px;
     }
 
-    .probleme, .benefices, .formulaire {
+    .probleme,
+    .benefices,
+    .formulaire {
         padding: 64px 0;
     }
 }
