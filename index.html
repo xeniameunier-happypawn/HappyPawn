@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Happy Pawn — Newsletters éducatives en nutrition canine et féline pour fidéliser les clients de votre marque pet-food en Europe.">
+    <meta name="theme-color" content="#2D5F2B">
+    <title>Happy Pawn — Fidélisez vos clients pet-food par la nutrition</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+</head>
+<body>
+
+    <!-- ══════════ SECTION 1 — HERO ══════════ -->
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Transformez vos clients one-shot<br>en acheteurs <span class="highlight-gold">fidèles</span> grâce à la nutrition animale</h1>
+                <p class="hero-subtitle">
+                    Des newsletters éducatives rédigées par une experte certifiée en nutrition canine et féline 
+                    — pour fidéliser vos clients et différencier votre marque pet-food en Europe.
+                </p>
+                <a href="#formulaire" class="btn btn-primary btn-lg">Demander mon audit gratuit</a>
+            </div>
+            <div class="hero-image">
+                <img src="img/hero-dog-cat.webp" alt="Chien et chat heureux — Happy Pawn" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SECTION 2 — PROBLÈME ══════════ -->
+    <section id="probleme" class="probleme">
+        <div class="container">
+            <h2>Votre communication coûte cher…<br>et ne <span class="highlight-red">fidélise personne</span> ?</h2>
+            <div class="pain-points">
+                <div class="pain-card fade-in">
+                    <div class="pain-icon">✕</div>
+                    <div class="pain-text">
+                        <p>Vos clients achètent une fois, puis disparaissent — aucun lien durable ne se crée après l'achat.</p>
+                    </div>
+                </div>
+                <div class="pain-card fade-in">
+                    <div class="pain-icon">✕</div>
+                    <div class="pain-text">
+                        <p>Vos emails sont ignorés ou finissent en spam — taux d'ouverture sous les 15%.</p>
+                    </div>
+                </div>
+                <div class="pain-card fade-in">
+                    <div class="pain-icon">✕</div>
+                    <div class="pain-text">
+                        <p>Vous n'avez pas d'équipe com' dédiée et pas le temps de créer du contenu expert chaque mois.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="transition-text fade-in">Et si une experte certifiée s'en occupait pour vous ?</p>
+        </div>
+    </section>
+
+    <!-- ══════════ SECTION 3 — BÉNÉFICES ══════════ -->
+    <section id="benefices" class="benefices">
+        <div class="container">
+            <h2>Ce que Happy Pawn fait pour <span class="highlight-green">votre marque</span></h2>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Fidélisation mesurable</h3>
+                    <p>Des newsletters qui génèrent un taux d'ouverture de 30 %+ et transforment vos clients en ambassadeurs de votre marque.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🧬</div>
+                    <h3>Expertise certifiée</h3>
+                    <p>Contenus rédigés par une spécialiste en nutrition canine et féline — pas par une IA générique ou un rédacteur généraliste.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🗓️</div>
+                    <h3>Clé en main, chaque mois</h3>
+                    <p>Stratégie éditoriale, rédaction, envoi : vous ne touchez à rien. Votre planning est géré de A à Z.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">💬</div>
+                    <h3>Le langage de vos clients</h3>
+                    <p>On parle comme les propriétaires passionnés parlent — pas comme un vétérinaire froid ni comme un marketeur creux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SECTION 4 — FORMULAIRE ══════════ -->
+    <section id="formulaire" class="formulaire">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <h2>Demandez votre <span class="highlight-green">audit gratuit</span></h2>
+                    <p>Recevez une analyse personnalisée des erreurs de communication de votre marque — sans engagement.</p>
+                </div>
+
+                <form id="contact-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prenom">Prénom <span class="required">*</span></label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required minlength="2" maxlength="50" autocomplete="given-name">
+                            <span class="error-message" id="error-prenom"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom <span class="required">*</span></label>
+                            <input type="text" id="nom" name="nom" placeholder="Votre nom" required minlength="2" maxlength="50" autocomplete="family-name">
+                            <span class="error-message" id="error-nom"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email professionnel <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com" required autocomplete="email">
+                        <span class="error-message" id="error-email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre message <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="5" placeholder="Décrivez brièvement votre marque et votre besoin…" required minlength="10" maxlength="1000"></textarea>
+                        <span class="char-count" id="char-count">0 / 1000</span>
+                        <span class="error-message" id="error-message"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+                        <span id="btn-text">Recevoir mon audit gratuit</span>
+                        <span id="btn-loader" class="loader hidden"></span>
+                    </button>
+                </form>
+
+                <!-- Confirmation -->
+                <div id="confirmation" class="confirmation hidden">
+                    <div class="confirmation-icon">🎉</div>
+                    <h3 id="confirmation-title">Merci ! Votre demande est envoyée</h3>
+                    <p>Notre experte analyse votre communication actuelle et revient vers vous sous 48h avec votre audit personnalisé.</p>
+                    <a href="#hero" class="btn btn-secondary">Retour à l'accueil</a>
+                </div>
+
+                <!-- Erreur réseau -->
+                <div id="error-network" class="error-network hidden">
+                    <p>⚠️ Une erreur est survenue, veuillez réessayer ou nous contacter directement à <a href="mailto:contact@happypawn.fr">contact@happypawn.fr</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ SECTION 5 — FOOTER ══════════ -->
+    <footer id="footer" class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">🐾 Happy Pawn</span>
+                <p class="footer-baseline">Expertise nutrition • Newsletters fidélisantes • Marques pet-food</p>
+            </div>
+            <div class="footer-links">
+                <a href="mailto:contact@happypawn.fr">Contact</a>
+                <a href="#mentions-legales">Mentions légales</a>
+            </div>
+            <p class="footer-copy">© 2026 Happy Pawn.fr — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
