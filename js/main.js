@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ══════════════════════════════════════
-    // SMOOTH SCROLL (liens ancres)
+    // SMOOTH SCROLL
     // ══════════════════════════════════════
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ══════════════════════════════════════
-    // COMPTEUR CARACTÈRES — TEXTAREA
+    // COMPTEUR CARACTÈRES
     // ══════════════════════════════════════
     const messageField = document.getElementById('message');
     const charCount = document.getElementById('char-count');
@@ -55,8 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmation = document.getElementById('confirmation');
     const confirmationTitle = document.getElementById('confirmation-title');
     const errorNetwork = document.getElementById('error-network');
+    const newsletterCheckbox = document.getElementById('newsletter');
 
-    // ✅ BON URL WEBHOOK N8N
+    // ✅ WEBHOOK N8N
     const WEBHOOK_URL = 'https://n8n-formation.isao.io/webhook/3e3df76e-c94f-4c17-903c-5c75cc0ff1b1';
 
     const namePattern = /^[A-Za-zÀ-ÿ\s\-']{2,50}$/;
@@ -109,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Validation en temps réel (blur + correction)
     fields.forEach(({ el, errorEl, fn, msg }) => {
         el.addEventListener('blur', () => validateField(el, errorEl, fn, msg));
         el.addEventListener('input', () => {
@@ -120,19 +120,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ══════════════════════════════════════
-    // SOUMISSION → WEBHOOK N8N
+    // SOUMISSION → WEBHOOK N8N (avec newsletter_active)
     // ══════════════════════════════════════
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Valider tous les champs
         let allValid = true;
         fields.forEach(({ el, errorEl, fn, msg }) => {
             if (!validateField(el, errorEl, fn, msg)) allValid = false;
         });
         if (!allValid) return;
 
-        // UI : loading
         btnText.classList.add('hidden');
         btnLoader.classList.remove('hidden');
         submitBtn.disabled = true;
@@ -142,7 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
             prenom: document.getElementById('prenom').value.trim(),
             nom: document.getElementById('nom').value.trim(),
             email: document.getElementById('email').value.trim(),
-            message: document.getElementById('message').value.trim()
+            message: document.getElementById('message').value.trim(),
+            newsletter_active: newsletterCheckbox.checked
         };
 
         try {
@@ -153,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                // Succès → confirmation personnalisée
                 form.classList.add('hidden');
                 confirmationTitle.textContent = `Merci, ${data.prenom} ! Votre demande est envoyée`;
                 confirmation.classList.remove('hidden');
