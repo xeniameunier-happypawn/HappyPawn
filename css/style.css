@@ -2,7 +2,6 @@
    VARIABLES & RESET
    ══════════════════════════════════════ */
 :root {
-    /* Palette principale — alignée sur Lovable */
     --orange: #D4722A;
     --orange-light: #E8913A;
     --orange-dark: #B85D1E;
@@ -107,7 +106,6 @@ a {
     transform: translateY(0);
 }
 
-/* Bouton Hero — style outline blanc comme sur Lovable */
 .btn-hero {
     background: rgba(255, 255, 255, 0.15);
     color: var(--white);
@@ -147,7 +145,7 @@ a {
 }
 
 /* ══════════════════════════════════════
-   SECTION 1 — HERO (image fullscreen + overlay orange)
+   SECTION 1 — HERO
    ══════════════════════════════════════ */
 .hero {
     position: relative;
@@ -174,7 +172,6 @@ a {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    /* Overlay orange/ambre chaud — reproduit le rendu Lovable */
     background: linear-gradient(
         180deg,
         rgba(195, 110, 40, 0.72) 0%,
@@ -388,7 +385,8 @@ label {
     color: var(--red);
 }
 
-input,
+input[type="text"],
+input[type="email"],
 textarea {
     width: 100%;
     padding: 12px 14px;
@@ -402,24 +400,28 @@ textarea {
     outline: none;
 }
 
-input::placeholder,
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
 textarea::placeholder {
     color: #9CA3AF;
 }
 
-input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
 textarea:focus {
     border-color: var(--orange);
     box-shadow: 0 0 0 3px rgba(212, 114, 42, 0.12);
 }
 
-input.invalid,
+input[type="text"].invalid,
+input[type="email"].invalid,
 textarea.invalid {
     border-color: var(--red);
     box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.08);
 }
 
-input.valid,
+input[type="text"].valid,
+input[type="email"].valid,
 textarea.valid {
     border-color: var(--orange);
 }
@@ -443,6 +445,95 @@ textarea {
     color: var(--red);
     margin-top: 4px;
     min-height: 18px;
+}
+
+/* ══════════ CHECKBOX NEWSLETTER ══════════ */
+.form-group-checkbox {
+    margin-bottom: 16px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 400;
+    position: relative;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--gray-light);
+    border-radius: 6px;
+    background: var(--white);
+    transition: var(--transition);
+    position: relative;
+    margin-top: 1px;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: var(--orange);
+    border-color: var(--orange);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 6px;
+    height: 11px;
+    border: solid var(--white);
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-label input[type="checkbox"]:focus + .checkmark {
+    box-shadow: 0 0 0 3px rgba(212, 114, 42, 0.2);
+}
+
+.checkbox-text {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+/* ══════════ MENTION RGPD ══════════ */
+.rgpd-notice {
+    background: #F9FAFB;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+}
+
+.rgpd-notice p {
+    font-size: 0.78rem;
+    color: #9CA3AF;
+    line-height: 1.65;
+}
+
+.rgpd-notice strong {
+    color: var(--gray);
+}
+
+.rgpd-notice a {
+    color: var(--orange);
+    text-decoration: underline;
+    transition: var(--transition);
+}
+
+.rgpd-notice a:hover {
+    color: var(--orange-dark);
 }
 
 /* Loader */
@@ -534,6 +625,7 @@ textarea {
     justify-content: center;
     gap: 24px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .footer-links a {
@@ -549,6 +641,70 @@ textarea {
 .footer-copy {
     font-size: 0.78rem;
     color: rgba(255, 255, 255, 0.25);
+}
+
+/* ══════════════════════════════════════
+   PAGE POLITIQUE DE CONFIDENTIALITÉ
+   ══════════════════════════════════════ */
+.page-legal {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+}
+
+.page-legal h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.page-legal .page-legal-date {
+    font-size: 0.88rem;
+    color: var(--gray);
+    margin-bottom: 40px;
+}
+
+.page-legal h2 {
+    font-size: 1.25rem;
+    margin-top: 36px;
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.page-legal p,
+.page-legal li {
+    font-size: 0.95rem;
+    color: #4B5563;
+    line-height: 1.75;
+    margin-bottom: 12px;
+}
+
+.page-legal ul {
+    padding-left: 24px;
+    margin-bottom: 16px;
+}
+
+.page-legal a {
+    color: var(--orange);
+    text-decoration: underline;
+}
+
+.page-legal a:hover {
+    color: var(--orange-dark);
+}
+
+.page-legal-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 40px;
+    font-weight: 600;
+    color: var(--orange);
+    font-size: 0.95rem;
+}
+
+.page-legal-back:hover {
+    color: var(--orange-dark);
 }
 
 /* ══════════════════════════════════════
@@ -598,5 +754,10 @@ textarea {
     .benefices,
     .formulaire {
         padding: 64px 0;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
     }
 }
